@@ -38,6 +38,10 @@ schema_view = get_schema_view(
 router = DefaultRouter()
 router.register(r'clientes', views.ClienteViewSet)
 router.register(r'enderecos', views.EnderecoViewSet)
+router.register(r'vendedores', views.VendedorViewSet)
+router.register(r'formas_pagamento', views.FormaPagamentoViewSet)
+router.register(r'itens', views.ItemViewSet)
+router.register(r'pedidos', views.PedidoViewSet)
 
 
 urlpatterns = [
