@@ -29,3 +29,24 @@ class ItemViewSet(viewsets.ModelViewSet):
 class PedidoViewSet(viewsets.ModelViewSet):
     queryset =  Pedido.objects.all()
     serializer_class = PedidoSerializer
+
+
+def index(request):
+    # Faça a requisição para sua API (substitua a URL pelo endpoint correto)
+    url = "http://itens/"
+    
+    # Consuma a API
+    response = requests.get(url)
+    
+    # Verifique se a requisição foi bem-sucedida
+    if response.status_code == 200:
+        data = response.json()  # Converte a resposta para JSON
+    else:
+        data = []  # Caso a API não retorne dados válidos, podemos retornar uma lista vazia
+
+    # Passe os dados para o contexto
+    context = {
+        'produtos': data
+    }
+    
+    return render(request, "index.html")
